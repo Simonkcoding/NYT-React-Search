@@ -15,10 +15,10 @@ router.post("/", (req, res) => {
     articlesController.create(req, res)
 })
 
-// Matches with "/api/articles/id"
-router.route("/:id")
-    .get(articlesController.findById)
-    .delete(articlesController.remove);
+// // Matches with "/api/articles/id"
+// router.route("/:id")
+//     .get(articlesController.findById)
+//     .delete(articlesController.remove);
 
 // Matches with "/api/articles/id"
 router.get("/:id",(req,res)=>{
