@@ -9,8 +9,8 @@
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
     "install": "cd client && yarn install",
-    "build": "cd client && npm run build ",
-    "heroku-postbuild": "npm run build"
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run build"
   },
   "repository": {
     "type": "git",
@@ -28,5 +28,8 @@
     "concurrently": "^4.0.1",
     "express": "^4.16.4",
     "mongoose": "^5.3.12"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.6"
   }
 }
