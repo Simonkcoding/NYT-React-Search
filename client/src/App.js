@@ -71,11 +71,25 @@ class App extends Component {
 
   handleSave = savedArticle => {
     API.saveArticle(savedArticle)
-      .then(res => { this.loadSavedArticles() })
+      .then(res => { 
+        console.log(savedArticle)
+        this.loadSavedArticles() 
+      })
       .catch(err => console.log(err));
   }
 
+componentDidMount(){
+  this.loadSavedArticles() 
+}
 
+deleteSaved = (id) => {
+  API.deleteArticle(id)
+  .then(res => { 
+    console.log(id)
+    this.loadSavedArticles() 
+  })
+  .catch(err => console.log(err));
+}
   render() {
     return (
       <div className="App">
@@ -125,10 +139,9 @@ class App extends Component {
                   <Button className="save-btn"
                     color="danger"
                     size="sm"
-                    // onClick={this.handleSave}
                     onClick={() => {
                       let savedArticle = {
-                        headline: article.headline.print_headline,
+                        title: article.headline.print_headline,
                         url: article.web_url,
                         date: article.pub_date
                       }
@@ -163,10 +176,12 @@ class App extends Component {
                   <Button className="delete-btn"
                     color="danger"
                     size="sm"
-                  // onClick={this.onDeleteClick.bind(this, _id)}
+                    onClick={() => this.deleteSaved(article._id)}
                   >Delete
                 </Button>
-                  123
+                  {article.title}<br/>
+                  URL: <br/>
+                  {article.url}
               </ListGroupItem>
               ))}
             </ListGroup>
