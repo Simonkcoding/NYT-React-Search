@@ -69,27 +69,7 @@ class App extends Component {
     }
   };
 
-  handleSave = savedArticle => {
-    API.saveArticle(savedArticle)
-      .then(res => { 
-        console.log(savedArticle)
-        this.loadSavedArticles() 
-      })
-      .catch(err => console.log(err));
-  }
 
-componentDidMount(){
-  this.loadSavedArticles() 
-}
-
-deleteSaved = (id) => {
-  API.deleteArticle(id)
-  .then(res => { 
-    console.log(id)
-    this.loadSavedArticles() 
-  })
-  .catch(err => console.log(err));
-}
   render() {
     return (
       <div className="App">
